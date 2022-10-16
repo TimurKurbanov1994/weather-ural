@@ -1,2 +1,2 @@
 # wather-npm-cli
-cliggs
+cliggsb
