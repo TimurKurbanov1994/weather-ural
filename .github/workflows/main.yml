@@ -17,7 +17,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           scope: '@octocat'
-      - run: npm version patch
-      - run: npm publish --access public
-      - env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Can patch
+        run : npm version patch
+        env :
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - name: Can publish
+        run : npm publish --access public
+        env :
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
