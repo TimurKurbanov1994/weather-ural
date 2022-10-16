@@ -1,1 +1,2 @@
 # wather-npm-cli
+cli
