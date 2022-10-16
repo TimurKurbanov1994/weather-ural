@@ -1,5 +1,5 @@
 {
-  "name": "weather-cli",
+  "name": "weather-ural",
   "version": "1.0.0",
   "description": "App-CLI",
   "main": "index.js",
@@ -7,6 +7,10 @@
     "build": "tsc -p .",
     "create": "npm run build && npm run test",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimurKurbanov1994/wather-npm-cli"
   },
   "keywords": [],
   "author": "",
