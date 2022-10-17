@@ -20,9 +20,10 @@ jobs:
       - name: Install dependencies and build 🔧
         run: npm i && npm run build 
       - name: Echo TOKEN
-        run: echo "$NODE_AUTH_TOKEN" && echo "end"
+        run: echo "$TEST" && echo "end"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          TEST: ${{ secrets.TEST }}
       - name: Publish package on NPM 📦
         run: npm publish
         env:
