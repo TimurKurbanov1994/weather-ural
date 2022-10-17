@@ -7,19 +7,22 @@ on:
       
 
 jobs:
-  npm-build-publish:
+  publish:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@master
-      # required - sets up auth in the node env
-      - name: Set up Node.js
-        uses: actions/setup-node@master
-        with:
-          node-version: 16.x
-          registry-url: 'https://npm.pkg.github.com'
-      # required
-      - name: version & publish
-        uses: geeman201/conventional-changelog-npm-publish/@v14
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v1
+    - name: Use Node.js 16
+      uses: actions/setup-node@v1
+      with:
+        # specify node version and the registry for the RELEASE build
+        node-version: 16
+        registry-url: https://registry.npmjs.org/
+    - name: npm ci, publish
+      run: |
+        npm ci
+        NODE_ENV=production npm publish --access public
+      env:
+        # Add to github settings/secrets
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
