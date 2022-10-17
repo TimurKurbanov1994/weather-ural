@@ -16,9 +16,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: 'https://registry.npmjs.org/'
       - name: Install dependencies and build 🔧
-        run: npm i && npm run build
+        run: npm i && npm run build 
+      - name: Echo TOKEN
+        run: 'echo ${{ secrets.NPM_TOKEN }}'
       - name: Publish package on NPM 📦
         run: npm publish
         env:
