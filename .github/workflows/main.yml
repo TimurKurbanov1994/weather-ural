@@ -19,11 +19,19 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
       - name: Install dependencies and build 🔧
         run: npm i && npm run build 
-      - name: Echo TOKEN
-        run: echo "$TEST" && echo "end"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          TEST: ${{ secrets.TEST }}
+          
+      - name: Patch Release tag
+        if: ${{ contains( github.event.pull_request.labels.*.name, 'patch') }}
+        run: npm version patch
+
+      - name: Minor Release tag
+        if: ${{ contains( github.event.pull_request.labels.*.name, 'minor') }}
+        run: npm version minor
+
+      - name: Major Release tag
+        if: ${{ contains( github.event.pull_request.labels.*.name, 'major') }}
+        run: npm version major
+        
       - name: Publish package on NPM 📦
         run: npm publish
         env:
