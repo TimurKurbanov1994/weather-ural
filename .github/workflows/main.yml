@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies and build 🔧
         run: npm i && npm run build 
       - name: Echo TOKEN
-        run: 'echo ${{ secrets.NPM_TOKEN }}'
+        run: echo "$NPM_TOKEN"
       - name: Publish package on NPM 📦
         run: npm publish
         env:
