@@ -7,22 +7,33 @@ on:
       
 
 jobs:
-  publish:
+  build:
 
+    # Run on latest version of ubuntu
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        # "ref" specifies the branch to check out.
+        # "github.event.release.target_commitish" is a global variable and specifies the branch the release targeted
+        ref: ${{ github.event.release.target_commitish }}
+    # install Node.js
     - name: Use Node.js 16
       uses: actions/setup-node@v1
       with:
-        # specify node version and the registry for the RELEASE build
         node-version: 16
+        # Specifies the registry, this field is required!
         registry-url: https://registry.npmjs.org/
-    - name: npm ci, publish
-      run: |
-        npm ci
-        NODE_ENV=production npm publish --access public
+    # clean install of your projects' deps. We use "npm ci" to avoid package lock changes
+    - run: npm ci
+    # set up git since we will later push to the repo
+    - run: git config --global user.name "GitHub CD bot"
+    - run: git config --global user.email "github-cd-bot@example.com"
+    # upgrade npm version in package.json to the tag used in the release.
+    - run: npm version ${{ github.event.release.tag_name }}
+    # publish to NPM -> there is one caveat, continue reading for the fix
+    - run: npm publish
       env:
-        # Add to github settings/secrets
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        # Use a token to publish to NPM. See below for how to set it up
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
