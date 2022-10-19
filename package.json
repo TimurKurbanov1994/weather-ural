@@ -29,5 +29,9 @@
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1"
-  }
+  },
+  "plugins": [
+    "@semantic-release/changelog",
+    "@semantic-release/git"
+  ]
 }
