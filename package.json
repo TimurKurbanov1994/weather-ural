@@ -1,6 +1,6 @@
 {
   "name": "weather-ural",
-  "version": "1.0.8",
+  "version": "0.0.0-development",
   "engines": {
     "node": "16.x"
   },
@@ -21,11 +21,12 @@
   "scripts": {
     "build": "tsc -p .",
     "create": "npm run build && npm run test",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/main.ts"
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/main.ts",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimurKurbanov1994/weather-ural"
+    "url": "https://github.com/TimurKurbanov1994/weather-ural"
   },
   "keywords": [],
   "author": "",
@@ -40,7 +41,8 @@
     "@types/node": "^18.11.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "semantic-release": "^19.0.5"
   },
   "plugins": [
     "@semantic-release/commit-analyzer",
