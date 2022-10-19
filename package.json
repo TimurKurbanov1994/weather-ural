@@ -5,16 +5,7 @@
     "node": "16.x"
   },
   "release": {
-    "verifyConditions": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git"
-    ],
-    "prepare": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git"
-    ]
+    "branches": ["master"]
   },
   "description": "App-CLI",
   "main": "main.js",
