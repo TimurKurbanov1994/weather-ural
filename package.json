@@ -4,7 +4,7 @@
   "engines": {
     "node": "16.x"
   },
-  "release": { "branches": [ "master" ] },
+  "release": { "branches": [ "main" ] },
   "description": "App-CLI",
   "main": "main.js",
   "scripts": {
