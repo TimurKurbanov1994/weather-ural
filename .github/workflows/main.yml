@@ -21,16 +21,9 @@ jobs:
         run: npm i && npm run build 
           
       - name: Patch Release tag
-        if: ${{ contains( github.event.pull_request.labels.*.name, 'patch') }}
         run: npm version patch
-
-      - name: Minor Release tag
-        if: ${{ contains( github.event.pull_request.labels.*.name, 'minor') }}
-        run: npm version minor
-
-      - name: Major Release tag
-        if: ${{ contains( github.event.pull_request.labels.*.name, 'major') }}
-        run: npm version major
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
       - name: Publish package on NPM 📦
         run: npm publish
