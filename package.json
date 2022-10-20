@@ -6,7 +6,7 @@
   },
   "release": {
     "branches": [
-      "main"
+      "master"
     ]
   },
   "description": "App-CLI",
@@ -34,7 +34,8 @@
     "@types/node": "^18.11.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "semantic-release": "^19.0.5"
   },
   "plugins": [
     "@semantic-release/commit-analyzer",
