@@ -5,7 +5,7 @@
     "node": "16.x"
   },
   "release": {
-    "branches": ["master"]
+    "branches": ["main"]
   },
   "description": "App-CLI",
   "main": "main.js",
