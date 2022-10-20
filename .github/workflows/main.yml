@@ -7,29 +7,20 @@ on:
 
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-          registry-url: 'https://registry.npmjs.org/'
-      - name: Install dependencies and build 🔧
-        run: npm i && npm run build
-
-      - name: Semantic Release
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: semantic release
         uses: cycjimmy/semantic-release-action@v3
         with:
-          semantic_version: 15.13.28  # It is recommended to specify specifying version range
-          # for semantic-release.
+          semantic_version: 19.0.5
+          # Define all extra plugins used in .releaserc.yml
+          # https://github.com/cycjimmy/semantic-release-action#extra_plugins
+          extra_plugins: |
+            @semantic-release/exec
+            @semantic-release/changelog
+            @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish package on NPM 📦
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
