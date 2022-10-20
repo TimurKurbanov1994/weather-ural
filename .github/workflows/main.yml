@@ -3,8 +3,8 @@ name: Publish Package to npmjs
 on:
   push:
     branches:
-      - main 
-      
+      - main
+
 
 jobs:
   build:
@@ -15,22 +15,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'
+          node-version: '14.x'
           registry-url: 'https://registry.npmjs.org/'
       - name: Install dependencies and build 🔧
-        run: npm i && npm run build 
-          
-#      - name: Patch Release tag
-#        run: npm version patch
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm i && npm run build
 
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v3
-        run: echo ${{ secrets.NPM_TOKEN }}
+      #      - name: Patch Release tag
+      #        run: npm version patch
+      #        env:
+      #          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish package on NPM 📦
         run: npm publish
