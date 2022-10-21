@@ -42,5 +42,17 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     "@semantic-release/github"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./src/main.ts",
+        "default": "./dist/main.js"
+      },
+      "require": {
+        "types": "./src/main.ts",
+        "default": "./dist/main.js"
+      }
+    }
+  }
 }
