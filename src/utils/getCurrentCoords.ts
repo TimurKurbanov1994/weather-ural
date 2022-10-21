@@ -7,7 +7,7 @@ export async function getCurrentCoords(): Promise<ICoords> {
         const response = await axios.get(config.geo_url)
         return {
             latitude: response.data.latitude,
-            longitude: response.data.latitude,
+            longitude: response.data.longitude,
         }
     } catch (err) {
         throw err
