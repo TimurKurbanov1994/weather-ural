@@ -10,7 +10,7 @@ import { getWeather } from './utils/getWeather'
 import { getCoordsOfCity } from './utils/getCoordsOfCity'
 import { getCloths } from './utils/getCloths'
 
-export class Weather {
+class Weather {
     current_coords: Promise<ICoords>
 
     constructor() {
@@ -38,3 +38,5 @@ export class Weather {
         }
     }
 }
+
+module.exports = Weather;
