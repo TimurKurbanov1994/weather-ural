@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@
+        uses: actions/checkout@3
       - name: Install dependencies
         run: npm i
       - name: Run build
