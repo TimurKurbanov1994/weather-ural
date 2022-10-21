@@ -37,6 +37,9 @@
     "ts-node": "^10.9.1",
     "semantic-release": "^19.0.5"
   },
+  "files": [
+    "build"
+  ],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
