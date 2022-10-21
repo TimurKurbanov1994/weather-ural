@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@
+      - name: Install dependencies and run build
+        run: npm i && npm run build
       - name: semantic release
         uses: cycjimmy/semantic-release-action@v3
         with:
