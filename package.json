@@ -49,11 +49,11 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./src/main.ts",
+        "types": "./src/interface/interface.ts",
         "default": "./dist/main.js"
       },
       "require": {
-        "types": "./src/main.ts",
+        "types": "./src/interface/interface.ts",
         "default": "./dist/main.js"
       }
     }
