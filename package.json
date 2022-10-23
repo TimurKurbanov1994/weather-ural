@@ -21,6 +21,7 @@
     "type": "git",
     "url": "https://github.com/TimurKurbanov1994/weather-ural"
   },
+  "types": "./src/interface/interface.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
